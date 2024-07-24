@@ -1,0 +1,48 @@
+"""AUTHOR:Elizabeth Chacko Varghese
+   https://github.com/ElizabethChacko
+"""
+
+def plaintxt(x,y):    # plaintext is to be decrypted
+    result = ""
+    for i in y:
+        if i == " " :
+            result += " "
+            continue
+        else:
+            code = ord(i)
+            for i in range(x):
+                if code==122:
+                    code=97
+                else:
+                    code+=1
+        ch = chr(code)
+        result += ch
+    return(result)
+def Cyphertxt(x,y):   #ciphertext is the text to be encrypted
+    result = ""
+    for i in y:
+        if i == " ":
+            result += " "
+            continue
+        else:
+            code = ord(i)
+            for i in range(x):
+                if code == 97:
+                    code = 122
+                else:
+                    code -= 1
+         
+        ch = chr(code)
+        result += ch
+    return(result)
+n = int(input())
+for i in range(n):
+    x = int(input())
+    y = str(input())
+    test = list(y.split(" "))
+    if "the" in test:
+        encrypt = cyphertxt(x,y)
+        print(encrypt)
+    else:
+        decrypt = plaintxt(x,y)
+        print(decrypt)
